@@ -77,4 +77,8 @@ export class HomePage {
     });
   }
 
+  capturar(){
+    
+  }
+
 }
