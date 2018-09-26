@@ -1,0 +1,41 @@
+<ion-header>
+
+  <ion-navbar >
+    <ion-title >Usuario</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+<ion-list>
+    <form>
+
+        <ion-item>
+            <ion-label floating>Nombre de usuario</ion-label>
+            <ion-input
+              [(ngModel)]="userName"
+              name="nombre"
+              type="text"
+              autocapitalize="off"
+              required
+            >
+            </ion-input>
+          </ion-item>
+          
+      <div padding>
+        <button
+            ion-button 
+            (click)="nombreUsuario()"
+            type="submit"
+            color="primary"
+            block
+        >
+          Conectarse
+        </button>
+
+        
+      </div>
+    </form>
+  </ion-list>
+</ion-content>
