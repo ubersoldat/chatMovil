@@ -23,7 +23,7 @@ export class HomePage {
   messages: Observable<Message[]>;
   // Nuevo mensaje
   newMessage: string;
-  base64Image: string[];
+  base64Image: string;
 
   //se agrego el nombre de usuario
   userName: string = "";
@@ -33,6 +33,7 @@ export class HomePage {
   constructor(public navCtrl: NavController, private _msgProvider: MessageProvider, private camera: Camera, public authService: AuthService, public navParams: NavParams) {
     this.messages = _msgProvider.fetchAll();
     this.userName=navParams.get('userName');
+    
   }
 
   signOut() {
@@ -62,7 +63,7 @@ export class HomePage {
   takePic() {
     const options: CameraOptions = {
       quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
+      destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     }
@@ -70,15 +71,29 @@ export class HomePage {
     this.camera.getPicture(options).then((imageData) => {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64 (DATA_URL):
-      this.base64Image.push('data:image/jpeg;base64,' + imageData);
+      this.base64Image = 'data:image/jpeg;base64,' + imageData;
     }, (err) => {
       // Handle error
       console.error('takePic error', err);
     });
   }
 
-  capturar(){
-    
+  getImage() {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      saveToPhotoAlbum: false
+    }
+
+    this.camera.getPicture(options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64 (DATA_URL):
+      this.base64Image = 'data:image/jpeg;base64,' + imageData;
+    }, (err) => {
+      // Handle error
+      console.error('takePic error', err);
+    });
   }
 
 }
