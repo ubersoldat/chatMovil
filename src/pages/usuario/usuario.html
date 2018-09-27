@@ -9,7 +9,7 @@
 <ion-content>
 
 <ion-list>
-    <form>
+    <form #validar="ngForm">
 
         <ion-item>
             <ion-label floating>Nombre de usuario</ion-label>
@@ -30,6 +30,7 @@
             type="submit"
             color="primary"
             block
+            ion-button [disabled]="!validar.form.valid"
         >
           Conectarse
         </button>

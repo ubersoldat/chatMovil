@@ -45,8 +45,8 @@ export class SignInPage {
     }
 
     signUp() {
-        //this.navCtrl.push(SignUpPage);
-        this.navCtrl.setRoot(UsuarioPage);
+        this.navCtrl.push(SignUpPage);
+        //this.navCtrl.setRoot(UsuarioPage);
     }
 
     alert(title: string, message: string) {

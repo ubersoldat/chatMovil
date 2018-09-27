@@ -12,7 +12,8 @@ import { SignInPage } from '../pages/signin/signin';
 
 // se le agregaron estas vistas para entrar si ya esta autentificado
 
-import { AuthService } from '../providers/auth-service';
+//import { AuthService } from '../providers/auth-service';
+
 import { HomePage } from '../pages/home/home';
 
 
@@ -20,44 +21,15 @@ import { HomePage } from '../pages/home/home';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  // comentamos esta linea para agregar la que se agrego
-
-  //rootPage: any = HomePage;
-
   rootPage: any = SignInPage;
 
-  /*
-
-  modificamos este constructor, por el de abajo
-
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
-      splashScreen.hide();
-    });
+      platform.ready().then(() => {
+          // Okay, so the platform is ready and our plugins are available.
+          // Here you can do any higher level native things you might need.
+          statusBar.styleDefault();
+          splashScreen.hide();
+      });
   }
-
-  */
-
-  constructor(
-    platform: Platform,
-    statusBar: StatusBar,
-    splashScreen: SplashScreen,
-    authService: AuthService) {
-    if (authService.authenticated) {
-        this.rootPage = SignInPage;
-    } else {
-        this.rootPage = HomePage;
-    }
-
-    platform.ready().then(() => {
-        statusBar.styleDefault();
-        splashScreen.hide();
-    });
-  }
-
-
 }
 
