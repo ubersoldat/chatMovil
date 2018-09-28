@@ -6,7 +6,6 @@ import { MessageProvider } from '../../providers/message/message';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
 // se importaron estas 2 
-
 import { AuthService } from '../../providers/auth-service';
 import { SignInPage } from '../signin/signin';
 
@@ -29,7 +28,6 @@ export class HomePage {
   userName: string = "";
 
   // se le agrego al constructor el public authService: AuthService
-
   constructor(public navCtrl: NavController, private _msgProvider: MessageProvider, private camera: Camera, public authService: AuthService, public navParams: NavParams) {
     this.messages = _msgProvider.fetchAll();
     this.userName=navParams.get('userName');
